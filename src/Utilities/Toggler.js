@@ -18,6 +18,7 @@ const Toggler = () => {
             checked={isDarkMode}
             onChange={toggleDarkMode}
             size={30}
+            className="duration-500"
         >
 
         </DarkModeSwitch>

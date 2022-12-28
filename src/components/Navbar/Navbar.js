@@ -20,14 +20,14 @@ const Navbar = () => {
 
     return (
         
-        <nav className="bg-white w-full border-b md:border-0 md:static">
+        <nav className="bg-white dark:bg-gray-800 duration-500 dark:text-white w-full border-b md:border-0 md:static">
           <div className="items-center px-4 md:flex md:px-8">
               <div className="flex items-center justify-between py-3 md:py-5 md:block">
                     <div>
-                        <span className='text-2xl flex justify-center items-center font-semibold'><BsListTask className='mr-2 text-sky-600 text-2xl font-semibold'></BsListTask><span className='text-sky-600	'>Task</span></span>
+                        <span className='text-2xl flex justify-center items-center font-semibold text-sky-600 dark:text-white'><BsListTask className='mr-2  text-2xl font-semibold'></BsListTask><span>Task</span></span>
                     </div>
                   <div className="md:hidden flex justify-end gap-3 items-center">
-                      <button className="text-gray-700 outline-none p-2 rounded-md focus:border-gray-400 focus:border"
+                      <button className="text-gray-700 dark:text-white dark:focus:border-white outline-none p-2 rounded-md focus:border-gray-400 focus:border"
                           onClick={() => setState(!state)}
                       >
                           {
@@ -52,7 +52,7 @@ const Navbar = () => {
                       {
                           navigation.map((item, idx) => {
                               return (
-                                <li key={idx} className="text-sky-600 hover:text-sky-800">
+                                <li key={idx} className="text-sky-600 dark:text-gray-200 dark:hover:text-white hover:text-sky-800">
                                     <Link className='flex justify-center items-center' to={item.path}>
                                         {item.icon}
                                         <span className='ml-2'>{item.title}</span>

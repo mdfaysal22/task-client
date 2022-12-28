@@ -1,11 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Toggler from "../../Utilities/Toggler";
 
 const Login = () => {
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex bg-white text-black dark:bg-gray-800 dark:text-white flex-col items-center">
       <div className="w-full md:w-1/3 flex flex-col items-center text-center pt-8 lg:pt-32 pb-16 lg:pb-48">
-        <form className="w-full border rounded-lg mx-auto">
+        <Toggler></Toggler>
+        <form className="w-full mt-5 border  dark:border-gray-600 rounded-lg mx-auto">
           <h1 className="text-3xl pt-2">Login Now</h1>
           <div className="flex flex-col gap-4 p-4 md:p-8">
             <div>
@@ -14,7 +16,7 @@ const Login = () => {
                 name="email"
                 type="email"
                 placeholder="Write your email address"
-                className="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"
+                className="w-full dark:bg-gray-500 dark:ring-gray-500 dark:border-gray-500 dark:placeholder:text-white dark:text-white bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"
               />
             </div>
 
@@ -24,22 +26,22 @@ const Login = () => {
                 name="password"
                 type="password"
                 placeholder="password"
-                className="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"
+                className="w-full  dark:bg-gray-500 dark:ring-gray-500 dark:border-gray-500 dark:placeholder:text-white dark:text-white bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"
               />
             </div>
 
-            <button className="block bg-gray-800 hover:bg-gray-700 active:bg-gray-600 focus-visible:ring ring-gray-300 text-white text-sm md:text-base font-semibold text-center rounded-lg outline-none transition duration-100 px-8 py-3">
+            <button className="block bg-gray-800 dark:bg-gray-600 hover:bg-gray-700 active:bg-gray-600 focus-visible:ring ring-gray-300 text-white text-sm md:text-base font-semibold text-center rounded-lg outline-none transition duration-100 px-8 py-3">
               Log in
             </button>
 
             <div className="flex justify-center items-center relative">
-              <span className="h-px bg-gray-300 absolute inset-x-0"></span>
-              <span className="bg-white text-gray-400 text-sm relative px-4">
+              <span className="h-px bg-gray-300 dark:bg-gray-700 absolute inset-x-0"></span>
+              <span className="bg-white dark:bg-gray-700 text-gray-400 text-sm relative px-4">
                 Log in with Google
               </span>
             </div>
 
-            <button className="flex justify-center items-center bg-white hover:bg-gray-100 active:bg-gray-200 border border-gray-300 focus-visible:ring ring-gray-300 text-gray-800 text-sm md:text-base font-semibold text-center rounded-lg outline-none transition duration-100 gap-2 px-8 py-3">
+            <button className="flex justify-center items-center dark:bg-gray-500 dark:text-white dark:border-gray-500 bg-white hover:bg-gray-100 active:bg-gray-200 border border-gray-300 focus-visible:ring ring-gray-300 text-gray-800 text-sm md:text-base font-semibold text-center rounded-lg outline-none transition duration-100 gap-2 px-8 py-3">
               <svg
                 className="w-5 h-5 shrink-0"
                 width="24"
@@ -69,12 +71,12 @@ const Login = () => {
             </button>
           </div>
 
-          <div className="flex justify-center items-center bg-gray-100 p-4">
-            <p className="text-gray-500 text-sm text-center">
+          <div className="flex justify-center rounded-b-md items-center dark:bg-gray-500 bg-gray-100 p-4">
+            <p className="text-gray-500  dark:text-white text-sm text-center">
               Don't have an account?{" "}
               <Link
                 to="/signup"
-                className="text-indigo-500 hover:text-indigo-600 active:text-indigo-700 transition duration-100"
+                className="text-indigo-500 dark:text-sky-400 hover:text-indigo-600  active:text-indigo-700 transition duration-100"
               >
                 Register
               </Link>
