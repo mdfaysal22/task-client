@@ -3,6 +3,7 @@ import {BsListTask} from 'react-icons/bs'
 import {BiTask} from 'react-icons/bi';
 import {MdOutlineAddTask, MdOutlineTaskAlt} from 'react-icons/md'
 import { Link } from 'react-router-dom';
+import Toggler from '../../Utilities/Toggler';
 
 
 
@@ -25,7 +26,7 @@ const Navbar = () => {
                     <div>
                         <span className='text-2xl flex justify-center items-center font-semibold'><BsListTask className='mr-2 text-sky-600 text-2xl font-semibold'></BsListTask><span className='text-sky-600	'>Task</span></span>
                     </div>
-                  <div className="md:hidden">
+                  <div className="md:hidden flex justify-end gap-3 items-center">
                       <button className="text-gray-700 outline-none p-2 rounded-md focus:border-gray-400 focus:border"
                           onClick={() => setState(!state)}
                       >
@@ -41,6 +42,9 @@ const Navbar = () => {
                               )
                           }
                       </button>
+                      <div>
+                        <Toggler></Toggler>
+                      </div>
                   </div>
               </div>
               <div className={`flex-1 items-center justify-end pb-3 mt-8 md:block md:pb-0 md:mt-0 ${ state ? 'block' : 'hidden'}`}>
@@ -54,9 +58,11 @@ const Navbar = () => {
                                         <span className='ml-2'>{item.title}</span>
                                     </Link>
                                 </li>
+                                
                               )
                           })
                       }
+                      <li className='hidden md:inline-block'><Toggler></Toggler></li>
                   </ul>
               </div>
               
