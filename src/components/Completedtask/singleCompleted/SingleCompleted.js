@@ -7,7 +7,7 @@ const SingleCompleted = ({ task, refetch }) => {
   const [commentStatus, setCommentStatus] = useState(false);
   const { _id, title, image } = task;
   const handleDelete = (id) => {
-    fetch(`http://localhost:5000/tasks/${id}`, {
+    fetch(`https://task-server-main.vercel.app/tasks/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
@@ -16,7 +16,7 @@ const SingleCompleted = ({ task, refetch }) => {
       });
   };
   const handleCompleted = (id) => {
-    fetch(`http://localhost:5000/tasks/${id}`, {
+    fetch(`https://task-server-main.vercel.app/tasks/${id}`, {
       method: "PUT",
     })
       .then((res) => res.json())

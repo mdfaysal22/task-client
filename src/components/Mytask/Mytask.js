@@ -14,7 +14,7 @@ const Mytask = () => {
 
     const {data: allTasks = [],refetch } = useQuery({
         queryKey:["tasks", user?.email],
-        queryFn: () => fetch('http://localhost:5000/tasks')
+        queryFn: () => fetch('https://task-server-main.vercel.app/tasks')
         .then(res => res.json())
 
     })

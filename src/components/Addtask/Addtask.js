@@ -30,7 +30,7 @@ const Addtask = () => {
       title, description, image: imgURL, complete: false, email
     }
     if(result.success){
-      fetch('http://localhost:5000/tasks', {
+      fetch('https://task-server-main.vercel.app/tasks', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
