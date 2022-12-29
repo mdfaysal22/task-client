@@ -16,7 +16,7 @@ const Completedtask = () => {
         <div>
             <h1 className='text-sky-500 text-3xl font-semibold'>Completed Tasks</h1>
             {
-                tasks.map(task => <SingleCompleted key={task.id} refetch={refetch} task = {task}></SingleCompleted>)
+                tasks.map(task => <SingleCompleted key={task._id} refetch={refetch} task = {task}></SingleCompleted>)
             }
         </div>
     );
