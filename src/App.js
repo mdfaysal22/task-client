@@ -8,33 +8,34 @@ import Login from "./components/Login/Login";
 import Mytask from "./components/Mytask/Mytask";
 import Signup from "./components/Signup/Signup";
 import Main from "./layout/Main";
+import PrivateRouter from "./layout/PrivateRouter";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Main></Main>,
+    element: <PrivateRouter><Main></Main></PrivateRouter>,
     children: [
       {
         path: "/",
-        element: <Mytask></Mytask>,
+        element: <PrivateRouter><Mytask></Mytask></PrivateRouter>,
       },
       {
         path: "/mytasks",
-        element: <Mytask></Mytask>,
+        element: <PrivateRouter><Mytask></Mytask></PrivateRouter>,
       },
       {
         path: "/addtask",
-        element: <Addtask></Addtask>,
+        element: <PrivateRouter><Addtask></Addtask></PrivateRouter>,
       },
       {
         path: "/completedtask",
-        element: <Completedtask></Completedtask>,
+        element: <PrivateRouter><Completedtask></Completedtask></PrivateRouter>,
       },
     ],
   },
   {
     path: "*",
-    element: <Error></Error>,
+    element: <PrivateRouter><Error></Error></PrivateRouter>,
   },
   {
     path: "/signup",

@@ -7,7 +7,7 @@ import { userAuth } from "../../contexts/AuthContext";
 const Addtask = () => {
   const imgbbToken = process.env.REACT_APP_imgbbKey;
   const {user} = useContext(userAuth);
-  const email = user.email;
+  const email = user?.email;
   const navigate = useNavigate();
   const { register, handleSubmit, formState: { errors } } = useForm();
   const handleTaskSubmit = (data, e) => {
