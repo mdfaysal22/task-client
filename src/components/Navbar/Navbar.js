@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import {BsListTask} from 'react-icons/bs'
 import {BiTask} from 'react-icons/bi';
 import {MdOutlineAddTask, MdOutlineTaskAlt} from 'react-icons/md'
@@ -9,7 +9,6 @@ import Toggler from '../../Utilities/Toggler';
 
 const Navbar = () => {
     const [state, setState] = useState(false)
-
 
   // Replace javascript:void(0) path with your path
   const navigation = [
@@ -62,7 +61,10 @@ const Navbar = () => {
                               )
                           })
                       }
-                      <li className='hidden md:inline-block'><Toggler></Toggler></li>
+                      <li className='hidden md:flex justify-center items-center gap-3'>
+                        <Toggler></Toggler>
+                        
+                    </li>
                   </ul>
               </div>
               

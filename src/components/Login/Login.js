@@ -1,13 +1,39 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { userAuth } from "../../contexts/AuthContext";
 import Toggler from "../../Utilities/Toggler";
 
 const Login = () => {
+  const {emailSignIn,setLoader, googleSignUp} = useContext(userAuth)
+  const navigate = useNavigate()
+  const handleLogin = (e) => {
+    e.preventDefault();
+    const form = e.target; 
+    const email = form.email.value;
+    const password = form.password.value;
+    emailSignIn(email, password)
+    .then(result => {
+      const user = result.user;
+    })
+    .then(err => console.log(err))
+    form.reset();
+    navigate("/");
+    
+  }
+
+  const handleGoogleSignUp = () => {
+    googleSignUp()
+    .then(result => {
+      setLoader(true);
+      const user = result.user;
+    })
+    .then(err => console.log(err))
+  }
   return (
     <div className="flex bg-white text-black dark:bg-gray-800 dark:text-white flex-col items-center">
       <div className="w-full md:w-1/3 flex flex-col items-center text-center pt-8 lg:pt-32 pb-16 lg:pb-48">
         <Toggler></Toggler>
-        <form className="w-full mt-5 border  dark:border-gray-600 rounded-lg mx-auto">
+        <form onSubmit={handleLogin} className="w-full mt-5 border  dark:border-gray-600 rounded-lg mx-auto">
           <h1 className="text-3xl pt-2">Login Now</h1>
           <div className="flex flex-col gap-4 p-4 md:p-8">
             <div>
@@ -41,7 +67,7 @@ const Login = () => {
               </span>
             </div>
 
-            <button className="flex justify-center items-center dark:bg-gray-500 dark:text-white dark:border-gray-500 bg-white hover:bg-gray-100 active:bg-gray-200 border border-gray-300 focus-visible:ring ring-gray-300 text-gray-800 text-sm md:text-base font-semibold text-center rounded-lg outline-none transition duration-100 gap-2 px-8 py-3">
+            <button onClick={handleGoogleSignUp} className="flex justify-center items-center dark:bg-gray-500 dark:text-white dark:border-gray-500 bg-white hover:bg-gray-100 active:bg-gray-200 border border-gray-300 focus-visible:ring ring-gray-300 text-gray-800 text-sm md:text-base font-semibold text-center rounded-lg outline-none transition duration-100 gap-2 px-8 py-3">
               <svg
                 className="w-5 h-5 shrink-0"
                 width="24"

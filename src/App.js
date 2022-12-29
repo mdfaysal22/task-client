@@ -1,3 +1,5 @@
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { Toaster } from "react-hot-toast";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Addtask from "./components/Addtask/Addtask";
 import Completedtask from "./components/Completedtask/Completedtask";
@@ -13,43 +15,45 @@ const router = createBrowserRouter([
     element: <Main></Main>,
     children: [
       {
-        path: '/',
-        element: <Mytask></Mytask>
+        path: "/",
+        element: <Mytask></Mytask>,
       },
       {
-        path: '/mytasks',
-        element: <Mytask></Mytask>
+        path: "/mytasks",
+        element: <Mytask></Mytask>,
       },
       {
-        path: '/addtask',
-        element: <Addtask></Addtask>
+        path: "/addtask",
+        element: <Addtask></Addtask>,
       },
       {
-        path: '/completedtask',
-        element: <Completedtask></Completedtask>
-      }
-      
-      
-    ]
+        path: "/completedtask",
+        element: <Completedtask></Completedtask>,
+      },
+    ],
   },
   {
     path: "*",
-    element: <Error></Error>
+    element: <Error></Error>,
   },
   {
-    path: '/signup',
-    element: <Signup></Signup>
+    path: "/signup",
+    element: <Signup></Signup>,
   },
   {
-    path: '/login',
-    element: <Login></Login>
-  }
-])
+    path: "/login",
+    element: <Login></Login>,
+  },
+]);
 function App() {
+  const queryClient = new QueryClient();
   return (
-    <RouterProvider router={router}>
-
-    </RouterProvider>
+    <div>
+      <QueryClientProvider client={queryClient}>
+        <RouterProvider router={router}></RouterProvider>
+        <Toaster></Toaster>
+      </QueryClientProvider>
+    </div>
   );
 }
 

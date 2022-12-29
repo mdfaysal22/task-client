@@ -1,33 +1,82 @@
-import React from "react";
+import React, { useContext } from "react";
+import { useForm } from "react-hook-form";
+import { toast } from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
+import { userAuth } from "../../contexts/AuthContext";
 
 const Addtask = () => {
+  const imgbbToken = process.env.REACT_APP_imgbbKey;
+  const {user} = useContext(userAuth);
+  const email = user.email;
+  const navigate = useNavigate();
+  const { register, handleSubmit, formState: { errors } } = useForm();
+  const handleTaskSubmit = (data, e) => {
+    e.preventDefault()
+    const form = e.target;
+    const title = data.title;
+    const description = data.description;
+    const img = data.image[0];
+    const formData = new FormData();
+    formData.append("image", img);
+    const url = `https://api.imgbb.com/1/upload?key=${imgbbToken}`
+    fetch(url, {
+      method: "POST",
+      body: formData
+  })
+  .then(res => res.json())
+  .then(result => {
+    const imgURL = result.data.url;
+    const task = {
+      title, description, image: imgURL, complete: false, email
+    }
+    if(result.success){
+      fetch('http://localhost:5000/tasks', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(task)
+      })
+      .then(res => res.json())
+      .then(result => {
+        navigate('/');
+        form.reset();
+        toast("added Task successfully");
+      })
+    }
+  })
+
+  }
   return (
     <div>
-      <form class="w-full border rounded-lg mx-auto">
-        <h1 className="text-center font-semibold text-3xl mt-5">Add Your New Task</h1>
-        <div class="flex flex-col gap-4 p-4 md:p-8">
+      <form onSubmit={handleSubmit(handleTaskSubmit)} className="w-full border dark:border-gray-600 rounded-lg mx-auto">
+        <h1 className="text-center font-semibold text-3xl dark:text-white mt-5">Add Your New Task</h1>
+        <div className="flex flex-col gap-4 p-4 md:p-8">
           <div>
             <input
-              name="text"
+              name="title"
+              {...register("title")}
               placeholder="Task Title"
               type="text"
-              class="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"
+              className="w-full dark:bg-gray-600 dark:border-gray-800 dark:text-white bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"
             />
           </div>
 
           <div>
             
             <textarea
-              name="password"
+              {...register("description")}
+              name="description"
               type="text"
               placeholder="Task Description"
-              class="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"
+              className="w-full dark:bg-gray-600 dark:border-gray-800 dark:text-white  bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"
             />
           </div>
           <div>
             
           <label
-                        className="flex w-full cursor-pointer appearance-none justify-center rounded-md border border-dashed border-gray-300 bg-white px-3 py-6 text-sm transition hover:border-gray-400 focus:border-solid focus:border-blue-600 focus:outline-none focus:ring-1 focus:ring-blue-600 disabled:cursor-not-allowed disabled:bg-gray-200 disabled:opacity-75"
+
+                        className="flex w-full cursor-pointer appearance-none justify-center rounded-md border border-dashed border-gray-300  dark:bg-gray-600 dark:border-gray-800 dark:text-white bg-white px-3 py-6 text-sm transition hover:border-gray-400 focus:border-solid focus:border-blue-600 focus:outline-none focus:ring-1 focus:ring-blue-600 disabled:cursor-not-allowed disabled:bg-gray-200 disabled:opacity-75"
                         tabIndex="0">
                         <span htmlFor="photo-dropbox" className="flex items-center space-x-2">
                             <svg className="h-6 w-6 stroke-gray-400" viewBox="0 0 256 256">
@@ -59,16 +108,16 @@ const Addtask = () => {
                                     strokeLinejoin="round"
                                     strokeWidth="24"></line>
                             </svg>
-                            <span className="text-xs font-medium text-gray-600">
+                            <span className="text-xs font-medium dark:text-gray-50 text-gray-600">
                                 Drop Your Task Image, or
-                                <span className="text-blue-600 underline ml-1">browse</span>
+                                <span className="text-blue-600 dark:text-sky-400 underline ml-1">browse</span>
                             </span>
                         </span>
-                        <input  id="photo-dropbox" type="file" className="sr-only" />
+                        <input {...register("image")} id="photo-dropbox" type="file" className="sr-only" />
                     </label>
           </div>
 
-          <button class="block bg-gray-800 hover:bg-gray-700 active:bg-gray-600 focus-visible:ring ring-gray-300 text-white text-sm md:text-base font-semibold text-center rounded-lg outline-none transition duration-100 px-8 py-3">
+          <button type="submit" className="block bg-gray-800 dark:bg-gray-600 hover:bg-gray-700 active:bg-gray-600 focus-visible:ring ring-gray-300 text-white text-sm md:text-base font-semibold text-center rounded-lg outline-none transition duration-100 px-8 py-3">
             Add Task
           </button>
 
