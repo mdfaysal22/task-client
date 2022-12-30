@@ -3,8 +3,10 @@ import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { userAuth } from "../../contexts/AuthContext";
+import useTitle from "../../Utilities/useTitle";
 
 const Addtask = () => {
+  useTitle("Add-Task");
   const imgbbToken = process.env.REACT_APP_imgbbKey;
   const {user} = useContext(userAuth);
   const email = user?.email;

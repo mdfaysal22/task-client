@@ -1,9 +1,11 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
 import { userAuth } from '../../contexts/AuthContext';
+import useTitle from '../../Utilities/useTitle';
 import SingleCompleted from './singleCompleted/SingleCompleted';
 
 const Completedtask = () => {
+    useTitle("Completed-Task");
     const {user} =  useContext(userAuth);
     const {data: allTasks = [],refetch } = useQuery({
         queryKey:["tasks", user?.email],

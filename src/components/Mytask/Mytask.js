@@ -2,9 +2,11 @@ import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { userAuth } from '../../contexts/AuthContext';
+import useTitle from '../../Utilities/useTitle';
 import SingleTask from './SingleTask/SingleTask';
 
 const Mytask = () => {
+    useTitle("My-Task");
     const {user, signOutSystem} = useContext(userAuth);
     const navigate = useNavigate();
     // const tasks = [
