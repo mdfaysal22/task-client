@@ -5,7 +5,7 @@ import { BiCheckCircle } from 'react-icons/bi';
 const SingleTask = ({task, refetch}) => {
     const {_id,title, description, image} = task;
     const handleDelete = (id) => {
-        fetch(`https://task-server-main.vercel.app/tasks/${id}`, {
+        fetch(`https://task-server-phi.vercel.app/tasks/${id}`, {
         method: "DELETE"
         })
         .then(res => res.json())
@@ -15,7 +15,7 @@ const SingleTask = ({task, refetch}) => {
     }
 
     const handleCompleted = (id) => {
-        fetch(`https://task-server-main.vercel.app/tasks/${id}`, {
+        fetch(`https://task-server-phi.vercel.app/tasks/${id}`, {
             method: "PUT"
         })
         .then(res => res.json())
