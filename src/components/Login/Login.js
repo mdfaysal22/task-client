@@ -31,7 +31,7 @@ const Login = () => {
   }
   return (
     <div className="flex bg-white text-black dark:bg-gray-800 dark:text-white flex-col items-center">
-      <div className="w-full md:w-1/3 flex flex-col items-center text-center pt-8 lg:pt-32 pb-16 lg:pb-48">
+      <div className="w-full md:w-1/2 lg:w-1/3 flex flex-col items-center text-center pt-8 lg:pt-32 pb-16 lg:pb-48">
         <Toggler></Toggler>
         <form onSubmit={handleLogin} className="w-full mt-5 border  dark:border-gray-600 rounded-lg mx-auto">
           <h1 className="text-3xl pt-2">Login Now</h1>

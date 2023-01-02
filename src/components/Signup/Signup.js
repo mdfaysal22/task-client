@@ -29,7 +29,7 @@ const Signup = () => {
   }
   return (
     <div className="flex min-h-screen bg-white dark:bg-gray-800 flex-col items-center">
-      <div className="w-full px-5 md:px-0 md:w-1/3 mx-auto flex flex-col items-center text-center pt-8 lg:pt-32 pb-16 lg:pb-48">
+      <div className="w-full px-5 md:px-0 md:w-1/2 lg:w-1/3 mx-auto flex flex-col items-center text-center pt-8 lg:pt-32 pb-16 lg:pb-48">
 
         <Toggler></Toggler>
         <form onSubmit={handleEmailSignup} className="w-full border mt-5 dark:border-gray-700 rounded-lg mx-auto">

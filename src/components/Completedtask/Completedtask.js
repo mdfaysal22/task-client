@@ -9,7 +9,7 @@ const Completedtask = () => {
     const {user} =  useContext(userAuth);
     const {data: allTasks = [],refetch } = useQuery({
         queryKey:["tasks", user?.email],
-        queryFn: () => fetch('https://task-server-phi.vercel.app/tasks')
+        queryFn: () => fetch('http://localhost:5000/tasks')
         .then(res => res.json())
 
     })
