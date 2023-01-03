@@ -5,7 +5,9 @@ import Addtask from "./components/Addtask/Addtask";
 import Completedtask from "./components/Completedtask/Completedtask";
 import Error from "./components/Error/Error";
 import Login from "./components/Login/Login";
+import Modal from "./components/modal/Modal";
 import Mytask from "./components/Mytask/Mytask";
+import Random from "./components/Random/Random";
 import Signup from "./components/Signup/Signup";
 import Main from "./layout/Main";
 import PrivateRouter from "./layout/PrivateRouter";
@@ -31,6 +33,14 @@ const router = createBrowserRouter([
         path: "/completedtask",
         element: <PrivateRouter><Completedtask></Completedtask></PrivateRouter>,
       },
+      {
+        path: "random-user",
+        element: <Random></Random>
+      },
+      {
+        path: '/modal',
+        element: <Modal></Modal>
+      }
     ],
   },
   {

@@ -4,6 +4,7 @@ import {BiTask} from 'react-icons/bi';
 import {MdOutlineAddTask, MdOutlineTaskAlt} from 'react-icons/md'
 import { Link } from 'react-router-dom';
 import Toggler from '../../Utilities/Toggler';
+import { AiFillAlert, AiOutlineUser } from 'react-icons/ai';
 
 
 
@@ -14,7 +15,9 @@ const Navbar = () => {
   const navigation = [
       { icon:<MdOutlineAddTask> </MdOutlineAddTask>, title: "Add Task", path: "/addtask" },
       { icon:<BiTask> </BiTask>,  title:"My Task", path: "/mytasks" },
-      { icon:<MdOutlineTaskAlt> </MdOutlineTaskAlt>,  title: "Completed Task", path: "/completedtask" }
+      { icon:<MdOutlineTaskAlt> </MdOutlineTaskAlt>,  title: "Completed Task", path: "/completedtask" },
+      {icon: <AiOutlineUser></AiOutlineUser>, title: "Random User", path: '/random-user'},
+      {icon: <AiFillAlert></AiFillAlert>, title: "Modal", path: "/modal" },
   ]
 
     return (
